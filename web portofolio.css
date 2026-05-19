@@ -1,0 +1,627 @@
+/* ==========================================
+   RESET & SETUP BASE STYLE
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --bg-dark-100: #0a0a0a;
+    --bg-dark-200: #141414;
+    --bg-dark-300: #1f1f1f;
+    --accent-red: #d10000;
+    --text-pure: #ffffff;
+    --text-muted: #aaaaaa;
+    --font-impact: 'Impact', sans-serif;
+    --font-main: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark-100);
+    color: var(--text-pure);
+    font-family: var(--font-main);
+    font-size: clamp(0.9rem, 1vw, 1.1rem);
+    overflow-x: hidden;
+}
+
+/* layout pembatas section mirip potongan kertas desain */
+.section-block {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(180deg, var(--bg-dark-100) 0%, var(--bg-dark-200) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: clamp(3rem, 10vh, 6rem) 0;
+}
+
+/* ==========================================
+   NAVBAR COMPONENT
+   ========================================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background: rgba(10, 10, 10, 0.9);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-main);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.navbar .logo img {
+    height: 53px; /* Menyesuaikan ukuran agar lebih proporsional dengan teks */
+    width: auto;
+    object-fit: contain;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: var(--text-pure);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 400;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--accent-red);
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* ==========================================
+   SECTION 1: HERO
+   ========================================== */
+.hero {
+    /* Hero berakhir di warna bg-dark-100 */
+    background: radial-gradient(circle at center, var(--accent-red) 0%, var(--bg-dark-100) 35%);
+    overflow: hidden;
+}
+
+/* Membalik urutan gradasi pada section genap agar menyambung sempurna */
+section:nth-of-type(even) {
+    background: linear-gradient(180deg, var(--bg-dark-200) 0%, var(--bg-dark-100) 100%);
+}
+
+.hero-content {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-title {
+    position: absolute;
+    font-family: var(--font-impact);
+    font-size: clamp(3rem, 15vw, 12rem);
+    letter-spacing: 2px;
+    color: var(--text-pure);
+    line-height: 0.8;
+    z-index: 1;
+    text-align: center;
+}
+
+.main-title.outline {
+    z-index: 3;
+    color: transparent;
+    -webkit-text-stroke: 0.8px var(--text-pure);
+    pointer-events: none; /* Agar tidak menghalangi klik pada elemen di bawahnya */
+}
+
+.hero-img-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: clamp(280px, 40vw, 500px);
+    z-index: 2;
+    transform: translate(-50%, -50%) rotate(-8deg);
+    transition: transform 0.4s ease;
+    animation: floatAnim 4s ease-in-out infinite;
+}
+
+.hero-img-container:hover {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1.1);
+}
+
+@keyframes floatAnim {
+    0%, 100% { transform: translate(-50%, -50%) translateY(0) rotate(-8deg); }
+    50% { transform: translate(-50%, -50%) translateY(-25px) rotate(-5deg); }
+}
+
+.floating-img {
+    width: 100%;
+    filter: drop-shadow(0 25px 35px rgba(0,0,0,0.8));
+    /* Gunakan mix-blend-mode jika gambar Anda memiliki background hitam solid */
+    /* mix-blend-mode: lighten; */
+}
+
+/* ==========================================
+   SECTION 2: ABOUT ME
+   ========================================== */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: start;
+}
+
+.block-title {
+    font-family: var(--font-impact);
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+}
+
+.block-title.center {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.about-desc {
+    color: var(--text-muted);
+    font-size: 1em;
+    line-height: 1.7;
+    text-align: justify;
+    margin-bottom: 30px;
+}
+
+.meta-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(15px, 3vw, 30px);
+    margin-bottom: 25px;
+}
+
+.meta-col h3, .experience-block h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.meta-col p, .experience-block p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* Profile Card Kanan */
+.about-right {
+    display: flex;
+    justify-content: center;
+}
+
+.profile-card {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+}
+
+.greet-text {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.profile-img-frame {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background-color: transparent;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+}
+
+.profile-img-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.red-accent-button {
+    width: 100%;
+    height: 24px;
+    background-color: var(--accent-red);
+    margin-top: 15px;
+    border-radius: 20px;
+}
+
+/* ==========================================
+   SECTION 3: SKILLS & SOFTWARE
+   ========================================== */
+.skills-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(2rem, 8vw, 6rem);
+    align-items: start;
+}
+
+/* Desain Grafik Batang */
+.chart-container {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 10px;
+}
+
+.chart-row {
+    display: flex;
+    align-items: center;
+}
+
+.chart-row .label {
+    width: clamp(100px, 15vw, 140px);
+    font-size: 0.9em;
+    color: var(--text-pure);
+    text-transform: lowercase;
+}
+
+.bar-bg {
+    flex: 1;
+    background-color: #222;
+    height: 20px;
+}
+
+.bar-fill {
+    background-color: var(--accent-red);
+    height: 100%;
+    transition: width 1.5s ease-in-out;
+}
+
+.chart-scale {
+    display: flex;
+    justify-content: space-between;
+    padding-left: clamp(100px, 15vw, 140px);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 5px;
+}
+
+/* Software Icon Grid */
+.software-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.soft-icon {
+    background-color: var(--bg-dark-300);
+    aspect-ratio: 1/1;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+.soft-icon:hover {
+    transform: scale(1.08);
+    box-shadow: 0 8px 20px rgba(209, 0, 0, 0.3);
+}
+
+.soft-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Warna/gaya khusus per logo aplikasi */
+.lr { background-color: #001e36; color: #4db2ff; }
+.ai { background-color: #330000; color: #ff9a00; }
+.ps { background-color: #001c3a; color: #00a8ff; }
+.canva { background: linear-gradient(45deg, #7d2ae8, #00c4cc); color: white; font-size: 0.8rem; }
+.ibispaint { background-color: #fff; }
+.picsart { background-color: #fff; }
+.capcut { background-color: #000; }
+.vn { background-color: #ffd60a; }
+
+/* ==========================================
+   SECTION 4: PROJECT GRID
+   ========================================== */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(15px, 3vw, 30px);
+    margin-top: 40px;
+}
+
+.project-box {
+    display: block;
+    background-color: var(--bg-dark-300);
+    border: 1px solid #2a2a2a;
+    border-radius: 16px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    transition: transform 0.3s;
+    text-decoration: none;
+    color: inherit;
+}
+
+.project-box:hover {
+    transform: translateY(-8px);
+}
+
+.red-display {
+    background-color: var(--accent-red);
+    width: 100%;
+    aspect-ratio: 3/4;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.red-display img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project-box p {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--text-pure);
+}
+
+/* ==========================================
+   SECTION 5: CONTACT & THANK YOU
+   ========================================== */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(50px, 10vw, 120px);
+    align-items: center;
+}
+
+.contact-left {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: clamp(450px, 60vh, 700px);
+}
+
+.contact-avatar {
+    width: clamp(200px, 25vw, 320px);
+    height: clamp(200px, 25vw, 320px);
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--bg-dark-300);
+    background-color: transparent;
+}
+
+.contact-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.social-links-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Agar tidak menghalangi interaksi pada foto jika ada */
+    z-index: 3;
+}
+
+.social-item {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: var(--text-pure);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+    pointer-events: auto;
+    white-space: nowrap;
+    transform: translateY(-50%);
+}
+
+/* Mengatur posisi ikon agar mengelilingi foto di sebelah kanan */
+.social-item:nth-child(1) { top: 38%; left: 92%; } /* Instagram - Atas Kanan */
+.social-item:nth-child(2) { top: 50%; left: 97%; } /* TikTok - Tengah Kanan */
+.social-item:nth-child(3) { top: 62%; left: 92%; } /* Facebook - Bawah Kanan */
+
+@media (max-width: 968px) {
+    .social-item:nth-child(1) { top: 38%; left: 85%; }
+    .social-item:nth-child(2) { top: 50%; left: 90%; }
+    .social-item:nth-child(3) { top: 62%; left: 85%; }
+    .contact-avatar {
+        width: 220px;
+        height: 220px;
+    }
+}
+
+.icon-circle {
+    width: 36px;
+    height: 36px;
+    background-color: var(--text-pure);
+    color: var(--bg-dark-100);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.social-item:hover {
+    color: var(--accent-red);
+}
+
+.social-item:hover .icon-circle {
+    background-color: var(--accent-red);
+    color: var(--text-pure);
+}
+
+/* Teks Thank you raksasa di kanan bawah */
+.contact-right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.thanks-text {
+    font-family: var(--font-impact);
+    font-size: clamp(3.5rem, 10vw, 7.5rem);
+    line-height: 0.9;
+    text-align: right;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+/* ==========================================
+   RESPONSIVE MEDIA QUERIES (HP & TABLET)
+   ========================================== */
+@media (max-width: 968px) {
+    .about-grid, .skills-grid, .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .thanks-text {
+        font-size: 5.5rem;
+        text-align: left;
+    }
+    .contact-right {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-dark-200);
+        padding: 20px;
+        text-align: center;
+        gap: 15px;
+        box-shadow: 0 10px 10px rgba(0,0,0,0.3);
+    }
+    .nav-links.active {
+        display: flex;
+    }
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+    .software-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ==========================================
+   PROJECT GALLERY (DETAIL PAGE)
+   ========================================== */
+.project-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(10px, 2vw, 25px);
+    margin-top: 50px;
+}
+
+.gallery-item {
+    aspect-ratio: 3/4;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: var(--bg-dark-300);
+    cursor: pointer;
+    transition: transform 0.3s ease, border-color 0.3s;
+    border: 1px solid #2a2a2a;
+}
+
+.gallery-item:hover {
+    transform: scale(1.03);
+    border-color: var(--accent-red);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Lightbox Modal (Efek Muncul saat diklik) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(209, 0, 0, 0.2);
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 90%;
+        padding: 40px 0;
+    }
+    .software-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .meta-info-grid {
+        grid-template-columns: 1fr;
+    }
+}

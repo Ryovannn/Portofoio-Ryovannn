@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Art - Ryovann</title>
+    <link href="https://fonts.googleapis.com/css2?family=Impact&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="web portofolio.css">
+    <style>
+        .detail-container {
+            padding-top: clamp(80px, 15vh, 120px);
+            text-align: center;
+            padding-bottom: 60px;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: var(--accent-red);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .project-info {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: justify;
+            font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+        }
+        @media (max-width: 768px) {
+            .project-large-img {
+                width: 95%;
+                border-radius: 12px;
+            }
+            .project-info { padding: 0 10px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="gambar/logo ryovan.png" alt="Logo"> <span>Ryovannn</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="website portofolio.html#project">Kembali ke Project</a></li>
+        </ul>
+    </nav>
+
+    <main class="container detail-container">
+        <a href="website portofolio.html#project" class="back-btn"><i class="fas fa-arrow-left"></i> Kembali ke Galeri</a>
+        <h1 class="block-title">Digital Art</h1>
+        <div class="project-info">
+            <p class="about-desc">Eksplorasi seni digital yang dibuat menggunakan software profesional dan pen tablet. Fokus pada komposisi warna, pencahayaan, dan detail visual modern.</p>
+        </div>
+
+        <!-- 9 Tempat untuk Karya Project -->
+        <div class="project-gallery">
+            <div class="gallery-item"><img src="LINK_KARYA_1" onerror="this.src='https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=400'"></div>
+            <div class="gallery-item"><img src="LINK_KARYA_2" onerror="this.src='https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?q=80&w=400'"></div>
+            <div class="gallery-item"><img src="LINK_KARYA_3" onerror="this.src='https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=400'"></div>
+            <div class="gallery-item"><img src="LINK_KARYA_4" onerror="this.src='https://images.unsplash.com/photo-1572044162444-ad60f128bde2?q=80&w=400'"></div>
+            <div class="gallery-item"><img src="LINK_KARYA_5" onerror="this.src='https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=400'"></div>
+            <div class="gallery-item"><img src="LINK_KARYA_6" onerror="this.src='https://images.unsplash.com/photo-1536240478700-b869070f9279?q=80&w=400'"></div>
+            <div class="gallery-item"><img src="LINK_KARYA_7" onerror="this.src='https://images.unsplash.com/photo-1554047600-77a6d9ecfe53?q=80&w=400'"></div>
+            <div class="gallery-item"><img src="LINK_KARYA_8" onerror="this.src='https://images.unsplash.com/photo-1493612276216-ee3925520721?q=80&w=400'"></div>
+            <div class="gallery-item"><img src="LINK_KARYA_9" onerror="this.src='https://images.unsplash.com/photo-1515405290399-ed322577142f?q=80&w=400'"></div>
+        </div>
+    </main>
+
+    <!-- Modal untuk Menampilkan Gambar Besar -->
+    <div id="imageModal" class="modal" onclick="this.style.display='none'">
+        <img class="modal-content" id="imgFull">
+    </div>
+
+    <script>
+        // Fungsi untuk membuat gambar muncul saat diklik
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("imgFull");
+        const items = document.querySelectorAll(".gallery-item img");
+
+        items.forEach(img => {
+            img.addEventListener("click", () => {
+                modal.style.display = "flex";
+                modalImg.src = img.src;
+            });
+        });
+    </script>
+</body>
+</html>

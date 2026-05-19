@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videography - Ryovann</title>
+    <link href="https://fonts.googleapis.com/css2?family=Impact&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="web portofolio.css">
+    <style>
+        .detail-container { padding-top: clamp(80px, 15vh, 120px); text-align: center; padding-bottom: 60px; }
+        .back-btn { display: inline-block; margin-bottom: 30px; color: var(--accent-red); text-decoration: none; font-weight: 500; }
+        .project-info { max-width: 700px; margin: 0 auto 40px auto; text-align: justify; font-size: clamp(0.95rem, 1.2vw, 1.1rem); }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="gambar/logo ryovan.png" alt="Logo"> <span>Ryovannn</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="website portofolio.html#project">Kembali</a></li>
+        </ul>
+    </nav>
+
+    <main class="container detail-container">
+        <a href="website portofolio.html#project" class="back-btn"><i class="fas fa-arrow-left"></i> Kembali ke Galeri</a>
+        <h1 class="block-title">Videography</h1>
+        <div class="project-info">
+            <p>Karya visual bergerak yang menggabungkan teknik pengambilan gambar (cinematography) dan proses editing untuk menyampaikan narasi yang kuat.</p>
+        </div>
+
+        <div class="project-gallery">
+            <div class="gallery-item"><img src="LINK_KARYA_1" onerror="this.src='https://i1-c.pinimg.com/736x/6c/44/2f/6c442f1aa8f2811b077dc87516fc7ac1.jpg'"></div>
+            <div class="gallery-item"><img src="LINK_KARYA_2" onerror="this.src='https://i1-c.pinimg.com/736x/55/79/09/5579092497673551571404101e479a07.jpg'"></div>
+            <div class="gallery-item"><img src="LINK_KARYA_3" onerror="this.src='https://images.unsplash.com/photo-1536240478700-b869070f9279?q=80&w=400'"></div>
+            <div class="gallery-item"><img src="LINK_KARYA_4" onerror="this.src='https://i1-c.pinimg.com/736x/6c/44/2f/6c442f1aa8f2811b077dc87516fc7ac1.jpg'"></div>
+            <div class="gallery-item"><img src="LINK_KARYA_5" onerror="this.src='https://i1-c.pinimg.com/736x/55/79/09/5579092497673551571404101e479a07.jpg'"></div>
+            <div class="gallery-item"><img src="LINK_KARYA_6" onerror="this.src='https://images.unsplash.com/photo-1536240478700-b869070f9279?q=80&w=400'"></div>
+            <div class="gallery-item"><img src="LINK_KARYA_7" onerror="this.src='https://i1-c.pinimg.com/736x/6c/44/2f/6c442f1aa8f2811b077dc87516fc7ac1.jpg'"></div>
+            <div class="gallery-item"><img src="LINK_KARYA_8" onerror="this.src='https://i1-c.pinimg.com/736x/55/79/09/5579092497673551571404101e479a07.jpg'"></div>
+            <div class="gallery-item"><img src="LINK_KARYA_9" onerror="this.src='https://images.unsplash.com/photo-1536240478700-b869070f9279?q=80&w=400'"></div>
+        </div>
+    </main>
+
+    <div id="imageModal" class="modal" onclick="this.style.display='none'">
+        <img class="modal-content" id="imgFull">
+    </div>
+
+    <script>
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("imgFull");
+        const items = document.querySelectorAll(".gallery-item img");
+        items.forEach(img => {
+            img.addEventListener("click", () => {
+                modal.style.display = "flex";
+                modalImg.src = img.src;
+            });
+        });
+    </script>
+</body>
+</html>
