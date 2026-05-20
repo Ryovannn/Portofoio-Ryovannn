@@ -11,6 +11,18 @@
         .detail-container { padding-top: clamp(80px, 15vh, 120px); text-align: center; padding-bottom: 60px; }
         .back-btn { display: inline-block; margin-bottom: 30px; color: var(--accent-red); text-decoration: none; font-weight: 500; }
         .project-info { max-width: 700px; margin: 0 auto 40px auto; text-align: justify; font-size: clamp(0.95rem, 1.2vw, 1.1rem); }
+
+        /* Pengaturan 6 kolom mendatar */
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px; /* Jarak antar foto */
+            margin-top: 30px;
+        }
+
+        /* Penyesuaian untuk layar tablet dan HP agar tidak terlalu sempit */
+        @media (max-width: 1024px) { .project-gallery { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 600px) { .project-gallery { grid-template-columns: repeat(2, 1fr); } }
     </style>
 </head>
 <body>
