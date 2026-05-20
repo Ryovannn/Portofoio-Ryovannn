@@ -33,6 +33,18 @@
             }
             .project-info { padding: 0 10px; }
         }
+
+        /* Pengaturan 6 kolom mendatar */
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px; /* Jarak antar foto */
+            margin-top: 30px;
+        }
+
+        /* Penyesuaian untuk layar tablet dan HP agar tidak terlalu sempit */
+        @media (max-width: 1024px) { .project-gallery { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 600px) { .project-gallery { grid-template-columns: repeat(2, 1fr); } }
     </style>
 </head>
 <body>
