@@ -416,11 +416,12 @@ section:nth-of-type(even) {
 }
 
 .contact-left {
-    position: relative;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: clamp(450px, 60vh, 700px);
+    gap: 30px;
+    min-height: auto;
 }
 
 .contact-avatar {
@@ -439,36 +440,24 @@ section:nth-of-type(even) {
 }
 
 .social-links-container {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    pointer-events: none; /* Agar tidak menghalangi interaksi pada foto jika ada */
+    display: flex;
+    gap: 30px;
+    justify-content: center;
     z-index: 3;
 }
 
 .social-item {
-    position: absolute;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
     color: var(--text-pure);
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     transition: color 0.3s;
-    pointer-events: auto;
-    white-space: nowrap;
-    transform: translateY(-50%);
 }
 
-/* Mengatur posisi ikon agar mengelilingi foto di sebelah kanan */
-.social-item:nth-child(1) { top: 38%; left: 92%; } /* Instagram - Atas Kanan */
-.social-item:nth-child(2) { top: 50%; left: 97%; } /* TikTok - Tengah Kanan */
-.social-item:nth-child(3) { top: 62%; left: 92%; } /* Facebook - Bawah Kanan */
-
 @media (max-width: 968px) {
-    .social-item:nth-child(1) { top: 38%; left: 85%; }
-    .social-item:nth-child(2) { top: 50%; left: 90%; }
-    .social-item:nth-child(3) { top: 62%; left: 85%; }
     .contact-avatar {
         width: 220px;
         height: 220px;
@@ -500,16 +489,28 @@ section:nth-of-type(even) {
 /* Teks Thank you raksasa di kanan bawah */
 .contact-right {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
 }
 
 .thanks-text {
     font-family: var(--font-impact);
-    font-size: clamp(3.5rem, 10vw, 7.5rem);
-    line-height: 0.9;
-    text-align: right;
+    font-size: clamp(7rem, 14vw, 10rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Memastikan kedua blok span berada di sumbu tengah */
+    gap: 0; /* Menghilangkan celah ekstra antar elemen span */
+    line-height: 0.75; /* Mempersempit tinggi baris agar kata THANK dan YOU lebih rapat */
+    text-align: center; /* Memastikan teks di dalam tiap baris rata tengah */
     letter-spacing: 2px;
     color: rgba(255, 255, 255, 0.95);
+}
+
+.thank-word {
+    font-size: 1em; /* Ukuran dasar untuk kata THANK */
+}
+
+.you-word {
+    font-size: 1.6em; /* Ukuran kata YOU dibuat sedikit lebih besar agar lebarnya seimbang */
 }
 
 /* ==========================================
@@ -524,11 +525,11 @@ section:nth-of-type(even) {
         grid-template-columns: repeat(2, 1fr);
     }
     .thanks-text {
-        font-size: 5.5rem;
-        text-align: left;
+        font-size: 4rem;
+        text-align: center;
     }
     .contact-right {
-        justify-content: flex-start;
+        justify-content: center;
     }
 }
 
